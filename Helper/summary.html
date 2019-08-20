@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>帮助文档</title>
+    <link rel="stylesheet" href="./3rd/element-ui/index.css">
+    <style>
+        html,body{
+            height: 100%;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+        .w1140{
+            width: 1140px;
+            margin: 0 auto;
+        }
+        .doc-header{
+            height: 80px;
+           
+        }
+        .doc-header-inner{
+            border-bottom: 1px solid #dcdfe6;height: 100%;line-height: 80px;
+            position: relative;
+            z-index: 10000;
+        }
+        .el-scrollbar__wrap{overflow-x: hidden;}
+        .titleImg{
+            height: 50px;
+            width: 50px;
+            vertical-align: middle;
+        }
+        .doc-title  {
+            font-size: 24px;
+            vertical-align: middle;
+            padding-left: 16px;
+        }
+        .doc-content{
+            height: calc(100vh - 80px);
+        }
+        .doc-content-inner{
+            height: 2000px;
+        }
+        .doc-menu  {
+            width: 240px;
+            position: fixed;
+            top: 80px;
+            bottom: 0;
+            height: calc(100vh - 80px);
+        }
+        .side-nav {
+            height: 100%;
+          
+            padding-bottom: 50px;
+            padding-right: 0;
+        }
+        .side-nav>ul {
+            padding-bottom: 50px;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        .side-nav li{
+            list-style: none;
+        }
+       
+        .side-nav>ul>.nav-item>a {
+            margin-top: 15px;
+        }
+        .side-nav .nav-item a {
+            font-size: 16px;
+            color: #333;
+            line-height: 40px;
+            height: 40px;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            transition: .15s ease-out;
+            font-weight: 700;
+        }
+        .side-nav .nav-item .nav-item a {
+            display: block;
+            height: 40px;
+            color: #444;
+            line-height: 40px;
+            font-size: 14px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-weight: 400;
+        }
+        .side-nav .nav-item .nav-item a.active, .side-nav .nav-item .nav-item a:hover {
+            color: #409eff;
+        }
+        .doc-menu-inner{
+            padding-top: 35px;
+        }
+        
+        .doc-iframe{
+            padding-left: 270px;
+            height: 100%;
+            padding-top: 6px;
+        }
+        #docIframe{
+            width: 100%;
+            height: 100%;
+        }
+        [v-cloak]{
+            display: none;
+        }
+        .el-backtop {
+            position: fixed;
+            background-color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #409eff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 0 6px rgba(0,0,0,.12);
+            cursor: pointer;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+    <div id="doc" v-cloak>
+        <header class="doc-header">
+            <div class="w1140 doc-header-inner">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNTAgNTAiPjxkZWZzPjxzdHlsZT4uY2xzLTEsLmNscy0ye2ZpbGw6bm9uZTt9LmNscy0ye2NsaXAtcnVsZTpldmVub2RkO30uY2xzLTN7ZmlsbDojZmZmO30uY2xzLTR7ZmlsbDojZWVlO30uY2xzLTV7Y2xpcC1wYXRoOnVybCgjY2xpcC1wYXRoKTt9LmNscy02e2NsaXAtcGF0aDp1cmwoI2NsaXAtcGF0aC0yKTt9LmNscy03e2lzb2xhdGlvbjppc29sYXRlO30uY2xzLTh7Y2xpcC1wYXRoOnVybCgjY2xpcC1wYXRoLTMpO30uY2xzLTl7Y2xpcC1wYXRoOnVybCgjY2xpcC1wYXRoLTQpO30uY2xzLTEwe2NsaXAtcGF0aDp1cmwoI2NsaXAtcGF0aC01KTt9LmNscy0xMXtmaWxsOiM1MGE3ZmY7fS5jbHMtMTJ7Y2xpcC1wYXRoOnVybCgjY2xpcC1wYXRoLTYpO30uY2xzLTEze2NsaXAtcGF0aDp1cmwoI2NsaXAtcGF0aC04KTt9LmNscy0xNHtjbGlwLXBhdGg6dXJsKCNjbGlwLXBhdGgtOSk7fS5jbHMtMTV7Y2xpcC1wYXRoOnVybCgjY2xpcC1wYXRoLTEwKTt9LmNscy0xNntmaWxsOiM1MWNmZmY7fS5jbHMtMTd7Y2xpcC1wYXRoOnVybCgjY2xpcC1wYXRoLTExKTt9LmNscy0xOHtmaWxsOiMwMDc2ZmY7fTwvc3R5bGU+PGNsaXBQYXRoIGlkPSJjbGlwLXBhdGgiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNy4wOCAtMzEuMjUpIj48cmVjdCBjbGFzcz0iY2xzLTEiIHg9IjM1LjQyIiB5PSI0OC4yNiIgd2lkdGg9IjE4LjYiIGhlaWdodD0iMjAuMzkiLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iY2xpcC1wYXRoLTIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNy4wOCAtMzEuMjUpIj48cmVjdCBjbGFzcz0iY2xzLTEiIHdpZHRoPSIxNDIyLjkyIiBoZWlnaHQ9IjgwMCIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSJjbGlwLXBhdGgtMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTI3LjA4IC0zMS4yNSkiPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iMzQuMzgiIHk9IjQ2Ljg4IiB3aWR0aD0iMTkuNzkiIGhlaWdodD0iMjIuOTIiLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iY2xpcC1wYXRoLTQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNy4wOCAtMzEuMjUpIj48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik00OS44OSw2Mi43M2E2LjA3LDYuMDcsMCwwLDEsMC04LjU4TDU0LDUwYTYuMDgsNi4wOCwwLDAsMC04LjU3LDBsLTguMjYsOC4yNmE2LjA3LDYuMDcsMCwwLDAsMCw4LjU4aDBhNi4wNyw2LjA3LDAsMCwwLDguNTgsMGw0LjEzLTQuMTNoMCIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSJjbGlwLXBhdGgtNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTI3LjA4IC0zMS4yNSkiPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iMzUuNDIiIHk9IjQ3LjkyIiB3aWR0aD0iMTguNzUiIGhlaWdodD0iMjAuODMiLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iY2xpcC1wYXRoLTYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNy4wOCAtMzEuMjUpIj48cmVjdCBjbGFzcz0iY2xzLTEiIHg9IjQ5LjkiIHk9IjQ0LjEyIiB3aWR0aD0iMTguNiIgaGVpZ2h0PSIyMC4zOSIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSJjbGlwLXBhdGgtOCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTI3LjA4IC0zMS4yNSkiPjxyZWN0IGNsYXNzPSJjbHMtMSIgeD0iNDguOTYiIHk9IjQyLjcxIiB3aWR0aD0iMjAuODMiIGhlaWdodD0iMjIuOTIiLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iY2xpcC1wYXRoLTkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNy4wOCAtMzEuMjUpIj48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik02Ni43Miw0NS44OWE2LjA1LDYuMDUsMCwwLDAtOC41NywwTDU0LDUwaDBhNi4wNyw2LjA3LDAsMCwxLDAsOC41OEw0OS45LDYyLjc0YTYuMDYsNi4wNiwwLDAsMCw4LjU2LDBsOC4yNi04LjI2YTYuMDcsNi4wNywwLDAsMCwwLTguNTgiLz48L2NsaXBQYXRoPjxjbGlwUGF0aCBpZD0iY2xpcC1wYXRoLTEwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjcuMDggLTMxLjI1KSI+PHJlY3QgY2xhc3M9ImNscy0xIiB4PSI0OC45NiIgeT0iNDMuNzUiIHdpZHRoPSIxOS43OSIgaGVpZ2h0PSIyMC44MyIvPjwvY2xpcFBhdGg+PGNsaXBQYXRoIGlkPSJjbGlwLXBhdGgtMTEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNy4wOCAtMzEuMjUpIj48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik01NCw1MGgwbC00LjEzLDQuMTNhNi4wNyw2LjA3LDAsMCwwLDAsOC41OGgwTDU0LDU4LjYxQTYuMDcsNi4wNywwLDAsMCw1NCw1MCIvPjwvY2xpcFBhdGg+PC9kZWZzPjx0aXRsZT7otYTmupAgMzI8L3RpdGxlPjxnIGlkPSLlm77lsYJfMiIgZGF0YS1uYW1lPSLlm77lsYIgMiI+PGcgaWQ9IuWbvuWxgl8xLTIiIGRhdGEtbmFtZT0i5Zu+5bGCIDEiPjxjaXJjbGUgY2xhc3M9ImNscy0zIiBjeD0iMjUiIGN5PSIyNSIgcj0iMjQuNSIvPjxwYXRoIGNsYXNzPSJjbHMtNCIgZD0iTTUyLjA4LDMyLjI1YTI0LDI0LDAsMSwxLTI0LDI0LDI0LDI0LDAsMCwxLDI0LTI0bTAtMWEyNSwyNSwwLDEsMCwyNSwyNSwyNSwyNSwwLDAsMC0yNS0yNVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNy4wOCAtMzEuMjUpIi8+PGcgY2xhc3M9ImNscy01Ij48ZyBjbGFzcz0iY2xzLTYiPjxnIGNsYXNzPSJjbHMtNyI+PGcgY2xhc3M9ImNscy04Ij48ZyBjbGFzcz0iY2xzLTkiPjxnIGNsYXNzPSJjbHMtMTAiPjxyZWN0IGNsYXNzPSJjbHMtMTEiIHg9IjMuMTMiIHk9IjExLjgiIHdpZHRoPSIyOS4wMiIgaGVpZ2h0PSIzMC44Ii8+PC9nPjwvZz48L2c+PC9nPjwvZz48L2c+PGcgY2xhc3M9ImNscy0xMiI+PGcgY2xhc3M9ImNscy02Ij48ZyBjbGFzcz0iY2xzLTciPjxnIGNsYXNzPSJjbHMtMTMiPjxnIGNsYXNzPSJjbHMtMTQiPjxnIGNsYXNzPSJjbHMtMTUiPjxyZWN0IGNsYXNzPSJjbHMtMTYiIHg9IjE3LjYxIiB5PSI3LjY2IiB3aWR0aD0iMjkuMDIiIGhlaWdodD0iMzAuOCIvPjwvZz48L2c+PC9nPjwvZz48L2c+PC9nPjxnIGNsYXNzPSJjbHMtMTciPjxnIGNsYXNzPSJjbHMtNiI+PHJlY3QgY2xhc3M9ImNscy0xOCIgeD0iMTUuODIiIHk9IjEzLjU3IiB3aWR0aD0iMTguMTEiIGhlaWdodD0iMjMuMTMiLz48L2c+PC9nPjwvZz48L2c+PC9zdmc+" class="titleImg">
+                <span class="doc-title">明源云组织用户中心数据迁移工具文档</span>
+            </div>
+        </header>
+        <el-scrollbar ref="myScrollbar">
+            <section class="doc-content">
+                <div class="doc-content-inner w1140"  :style="{height:iHeight+'px'}">
+                    <div class="doc-menu">
+                        <el-scrollbar style="height: 100%;">
+                            <div class="doc-menu-inner">
+                                <div class="side-nav">
+                                    <ul>
+                                        <li class="nav-item" v-for="(item,index) in menu" :key="index">
+                                            <a>{{item.title}}</a>                                        
+                                            <ul class="pure-menu-list sub-nav" style="height: auto;padding: 0;">
+                                                <li class="nav-item"  
+                                                :data-id="child.id"
+                                                @click="showIframe(child)"
+                                                v-for="(child,j) in item.children" :key="j">
+                                                    <a href="#" :class="{'active':currentId==child.id}" >{{child.title}}</a>
+                                                </li>
+                                                
+                                            </ul>                                   
+                                        </li>
+                                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </el-scrollbar>
+                    </div>
+                    <div class="doc-iframe">
+                        <iframe id="docIframe" frameborder="0"></iframe>
+                    </div>
+                    <div class="el-backtop" @click="scrollTop" v-show="showTopIcon" style="right: 100px; bottom: 150px;"><i class="el-icon-caret-top"></i></div>
+                </div>
+            </section>
+        </el-scrollbar>
+    </div>
+<script src="./3rd/vue.min.js"></script>
+<script src="./3rd/element-ui/index.js"></script>
+<script>
+new Vue({
+    el:'#doc',
+    data:function(){
+        return {
+            iHeight:2000,
+            currentId:-1,
+            ifr:'',
+            showTopIcon:false,
+            menu:[
+                {
+                    title:'开发指南',
+                    children:[
+                        {
+                            id:'000000',
+                            title:'数据源配置',
+                            src:'./shuj-ju-yuan.html'
+                        },
+                        {
+                            id:'000001',
+                            title:'安装',
+                            src:'./shuj-ju-yuan.html'
+                        },
+                        {
+                            id:'000002',
+                            title:'快速上手',
+                            src:'https://baidu.com'
+                        },
+                        {
+                            id:'000003',
+                            title:'内置主题',
+                            src:'./shuj-ju-yuan.html'
+                        }
+                    ]
+                },
+                {
+                    title:'操作文档',
+                    children:[
+                        {
+                            id:'000004',
+                            title:'安装',
+                            src:'./shuj-ju-yuan.html'
+                        },
+                        {
+                            id:'000005',
+                            title:'快速上手',
+                            src:'https://baidu.com'
+                        },
+                        {
+                            id:'000006',
+                            title:'内置主题',
+                            src:'./shuj-ju-yuan.html'
+                        },
+                        {
+                            id:'000007',
+                            title:'数据源配置',
+                            src:'./shuj-ju-yuan.html'
+                        }
+                    ]
+                },
+                {
+                    title:'操作文档',
+                    children:[
+                        {
+                            id:'000004',
+                            title:'安装',
+                            src:'./shuj-ju-yuan.html'
+                        },
+                        {
+                            id:'000005',
+                            title:'快速上手',
+                            src:'https://baidu.com'
+                        },
+                        {
+                            id:'000006',
+                            title:'内置主题',
+                            src:'./shuj-ju-yuan.html'
+                        },
+                        {
+                            id:'000007',
+                            title:'数据源配置',
+                            src:'./shuj-ju-yuan.html'
+                        }
+                    ]
+                },
+                {
+                    title:'操作文档',
+                    children:[
+                        {
+                            id:'000004',
+                            title:'安装',
+                            src:'./shuj-ju-yuan.html'
+                        },
+                        {
+                            id:'000005',
+                            title:'快速上手',
+                            src:'https://baidu.com'
+                        },
+                        {
+                            id:'000006',
+                            title:'内置主题',
+                            src:'./shuj-ju-yuan.html'
+                        },
+                        {
+                            id:'000007',
+                            title:'数据源配置',
+                            src:'./shuj-ju-yuan.html'
+                        }
+                    ]
+                },
+            ]
+        }
+    },
+    mounted:function() {
+        var self = this
+        self.$nextTick(function(){
+
+            self.ifr = document.getElementById('docIframe')
+            self.ifr.onload = function(){          
+                var iDoc = self.ifr.contentWindow.document 
+                var height = self.calcPageHeight(iDoc)
+                self.iHeight = height
+                iDoc.body.style.overflowY = 'hidden'
+                self.$refs['myScrollbar'].wrap.scrollTop = 0
+            }
+
+            /*默认显示第一个子菜单*/
+            if(self.menu.length>0 && self.menu[0].children.length){
+                self.currentId = self.menu[0].children[0].id
+                self.ifr.src = self.menu[0].children[0].src
+            }
+
+            window.addEventListener('scroll',function(e){  
+                var top = self.$refs['myScrollbar'].wrap.scrollTop
+                if(top>100){
+                    self.showTopIcon = true
+                } else {
+                    self.showTopIcon = false
+                }
+            },true)
+        })   
+    },
+    methods: {
+        calcPageHeight:function(doc) {
+            var cHeight = Math.max(doc.body.clientHeight, doc.documentElement.clientHeight)
+            var sHeight = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight)
+            var height  = Math.max(cHeight, sHeight)
+            return height
+        },
+        showIframe:function(item){
+            var self = this
+            self.currentId = item.id
+            self.ifr.src=item.src + '?_t=' + new Date().getTime()           
+        },
+        scrollTop:function(){
+            var self = this
+            self.$refs['myScrollbar'].wrap.scrollTop = 0
+        }
+    }
+})
+</script>
+</body>
+</html>
